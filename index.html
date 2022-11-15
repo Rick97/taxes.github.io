@@ -1,0 +1,51 @@
+<html>
+    <form id="myForm">
+        <label for="imp_ann">Contributo Annuale</label><br>
+        <input type="text" id="imp_ann" name="imp_ann" value=""><br>
+        <label for="tasso">Tasso Annuale</label><br>
+        <input type="text" id="tasso" name="tasso" value=""><br>
+        <label for="anni">Anni Contributi</label><br>
+        <input type="text" id="anni" name="anni" value=""><br><br>
+        <input type="submit" value="Submit"><br><br>
+        <label for="totale">Totale Contributi</label>
+        <input type="text" id="totale" value="" readonly><br>
+        <label for="tasso_tot">Totale Trattenute</label>
+        <input type="text" id="tasso_tot" value="" readonly><br>
+        <label for="cont_tot">Uscita</label>
+        <input type="text" id="cont_tot" value="" readonly><br>
+        
+    </form>
+    
+<script>
+document.addEventListener('DOMContentLoaded', e => {
+    let formElement = document.forms.myForm;
+
+    formElement.addEventListener('submit', e => {
+        e.preventDefault();
+        let formData = new FormData(formElement); // build form data
+        let cont_ann = formData.get('imp_ann'); // get form field values
+        let tasso = formData.get('tasso');
+        let anni = formData.get('anni');
+        let cont_tot = 0;
+        let tasso_tot=0;
+        let totale=cont_ann*anni;
+         for (let i=0; i<anni; i++)
+        {
+            cont_tot = parseFloat(cont_tot) + parseFloat(cont_ann);
+            let tasso_ann = (cont_tot) * (tasso) /100;
+            tasso_ann = Math.round((tasso_ann + Number.EPSILON) * 100) / 100;
+            cont_tot = cont_tot - tasso_ann;
+            cont_tot = Math.round((cont_tot + Number.EPSILON) * 100) / 100;
+            tasso_tot = tasso_tot + tasso_ann;
+            tasso_tot = Math.round((tasso_tot + Number.EPSILON) * 100) / 100;
+        }
+        document.getElementById('totale').value = totale;
+        document.getElementById('tasso_tot').value = tasso_tot;
+        document.getElementById('cont_tot').value = cont_tot; // put your results where they need to be
+    });
+
+});
+
+</script>
+
+</html>
