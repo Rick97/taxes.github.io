@@ -1,0 +1,38 @@
+body{
+    background-color: lightgrey;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: large;
+    display: block;
+    text-align: center;
+}
+
+form{
+    margin: 0 auto;
+    margin-top: 3rem;
+    border: 2px solid black;
+    padding: 2rem;
+    width: 50%;
+    background-color: antiquewhite;
+}
+
+input{
+    margin: 0.5rem;
+    border-style: groove;
+    border-color: black;
+    background-color: #eee;
+}
+
+button{
+    padding: 0.5rem 1.5rem;
+    margin: 1rem;
+    border-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: larger;
+}
+
+input:active {
+    border-color: transparent;
+}
+
